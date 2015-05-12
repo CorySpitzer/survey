@@ -34,3 +34,10 @@ post('/surveys/:id') do
   @my_survey.update(description: params.fetch('description'))
   redirect("/surveys/#{@id}")
 end
+
+delete('/surveys/:id') do
+  @id = params.fetch('id').to_i()
+  @my_survey = Survey.find(@id)
+  @my_survey.delete()
+  redirect("/surveys")
+end

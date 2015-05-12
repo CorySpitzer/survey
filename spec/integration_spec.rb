@@ -31,4 +31,22 @@ describe('The Survey App', type: :feature) do
     end
   end
 
+  describe('the delete survey from survey_edit path') do
+    it('deletes a survey') do
+      survey = Survey.create(description: 'Mood')
+      visit("/surveys/#{survey.id}")
+      click_button('Delete Survey')
+      expect(page).to_not have_content('Mood')
+    end
+  end
+
+  describe('the survey delete button on the surveys page') do
+    it('deletes a survey from the surveys page') do
+      survey = Survey.create(description: 'Mood')
+      visit('/surveys')
+      click_button('Delete Survey')
+      expect(page).to_not have_content('Mood')
+    end
+  end
+
 end

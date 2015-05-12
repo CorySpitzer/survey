@@ -19,4 +19,8 @@
   <p>There are no questions for this Survey yet.</p>
 <% end %>
 <p> dummy add questions text </p>
-<p> dummy delete survey button </p>
+
+<form action="/surveys/<%= @my_survey.id()%>" method="post">
+  <input name="_method" type="hidden" value="delete">
+  <button type="submit">Delete Survey</button>
+</form>
