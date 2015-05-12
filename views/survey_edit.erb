@@ -16,9 +16,9 @@
 <% if @my_survey.questions.any? %>
   <ul>
     <p>The following questions have been added to your survey.</p>
-    <% @surveys.questions.each do |question|%>
+    <% @my_survey.questions.each do |question|%>
       <li>
-        <a href="questions/<%=question.id()%>"><%= question.description() %></a>
+        <a href="questions/<%=question.id()%>"><%= question.content() %></a>
       </li>
     <% end %>
   </ul>

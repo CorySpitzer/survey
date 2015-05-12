@@ -38,7 +38,7 @@ end
 post('/surveys/:id') do
   @id = params.fetch('id').to_i()
   @my_survey = Survey.find(@id)
-  @my_survey.questions.new(content: parmas.fetch('content'))
+  @my_survey.questions.create(content: params.fetch('content'))
   redirect("/surveys/#{@id}")
 end
 
