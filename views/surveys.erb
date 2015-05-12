@@ -3,7 +3,7 @@
 <form action='/surveys' method='post'>
   <label for='description'>Enter Survey Name</label>
   <input id='description' name='description' type='text'>
-  <button type='submit'>Add</button>
+  <button type='submit' class='btn-success'>Add</button>
 </form>
 
 <ul>
@@ -12,7 +12,7 @@
       <a href="surveys/<%=survey.id()%>"><%= survey.description() %></a>
       <form action="/surveys/<%=survey.id()%>" method="post">
         <input name="_method" type="hidden" value="delete">
-        <button type="submit">Delete Survey</button>
+        <button type="submit" class='btn-danger'>Delete Survey</button>
       </form>
     </li>
   <% end %>
