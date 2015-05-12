@@ -13,6 +13,12 @@ describe('The Survey App', type: :feature) do
   end
 
   describe('the add survey path') do
+    it('adds a survey') do
+      visit('/surveys')
+      fill_in('description', with: 'Your mood!')
+      click_button('Add')
+      expect(page).to have_content('Your mood')
+    end
   end
 
 end

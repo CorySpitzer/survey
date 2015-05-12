@@ -1,0 +1,22 @@
+<h2>Edit a Survey</h2>
+
+<form action='/surveys/<%=@id%>' method='post'>
+  <label for='description'>Change Survey Name</label>
+  <input id='description' name='description' type='text'>
+  <button type='submit'>Change</button>
+</form>
+
+<% if @my_survey.questions.any? %>
+  <ul>
+    <p>The following questions have been added to your survey.</p>
+  <% @surveys.questions.each do |question|%>
+    <li>
+      <a href="questions/<%=question.id()%>"><%= question.description() %></a>
+    </li>
+  <% end %>
+  </ul>
+<% else %>
+  <p>There are no questions for this Survey yet.</p>
+<% end %>
+<p> dummy add questions text </p>
+<p> dummy delete survey button </p>
