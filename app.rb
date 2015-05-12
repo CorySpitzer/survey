@@ -93,7 +93,12 @@ delete('/answers/:id') do
   redirect("/questions/#{@my_answer.question_id}")
 end
 
-
+patch('/answers/:id') do
+  @id = params.fetch('id')
+  @my_answer = Answer.find(@id)
+  @my_answer.update(content: params.fetch('content'))
+  redirect("/answers/#{@id}")
+end
 
 
 

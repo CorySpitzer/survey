@@ -87,7 +87,7 @@ describe('The Survey App', type: :feature) do
     end
   end
 
-  describe('deletes an answer') do
+  describe('answer edit path') do
     it('allows deleting an answer') do
       survey = Survey.create(description: 'Important stuff')
       question = survey.questions.create(content: "What is the mostest?")
@@ -96,6 +96,17 @@ describe('The Survey App', type: :feature) do
       click_button('Delete Answer')
       expect(page).to_not have_content('Spondoolich')
     end
+
+    it('allows changing of answer') do
+      survey = Survey.create(description: 'Important stuff')
+      question = survey.questions.create(content: "What is the mostest?")
+      answer = question.answers.create(content: "Uff")
+      visit("/answers/#{answer.id}")
+      fill_in('content', with: 'Hurrah!')
+      click_button('Change')
+      expect(page).to have_content('Hurrah!')
+    end
+
   end
 
 
