@@ -18,8 +18,12 @@ end
 
 post('/surveys') do
   @description = params.fetch('description')
-  Survey.create(description: @description)
-  redirect("/surveys")
+  @survey = Survey.new(description: @description)
+  if @survey.save
+    redirect("/surveys")
+  else
+    erb(:errors)
+  end
 end
 
 get('/surveys/:id') do
