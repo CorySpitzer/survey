@@ -49,4 +49,14 @@ describe('The Survey App', type: :feature) do
     end
   end
 
+  describe('the add questions button') do
+    it('adds a question to a survey') do
+      survey = Survey.create(description: 'Mood')
+      visit("/surveys/#{survey.id}")
+      fill_in('content', with: 'Why?')
+      click_button('Add Question')
+      expect(page).to have_content('Why?')
+    end
+  end
+
 end
