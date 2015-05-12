@@ -76,6 +76,29 @@ describe('The Survey App', type: :feature) do
     end
   end
 
+  describe('adding answers to a question') do
+    it('allows adding answer') do
+      survey = Survey.create(description: 'Important stuff')
+      question = Question.create(content: "What is the mostest?", survey_id: survey.id)
+      visit("/questions/#{question.id}")
+      fill_in('answer_content', with: 'Spondoolich')
+      click_button('Add Answer')
+      expect(page).to have_content('Spondoolich')
+    end
+  end
+
+  describe('deletes an answer') do
+    it('allows deleting an answer') do
+      survey = Survey.create(description: 'Important stuff')
+      question = survey.questions.create(content: "What is the mostest?")
+      answer = question.answers.create(content: "Uff")
+      visit("/answers/#{answer.id}")
+      click_button('Delete Answer')
+      expect(page).to_not have_content('Spondoolich')
+    end
+  end
+
+
 end
 
 

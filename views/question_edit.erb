@@ -1,0 +1,33 @@
+<h2>Edit Question: <i><b><%= @my_question.content %></b></i></h2>
+
+<form action='/questions/<%=@id%>' method='post'>
+  <input name='_method' type="hidden" value='patch'>
+  <label for='content'>Change Question Name</label>
+  <input id='content' name='content' type='text'>
+  <button type='submit'>Change</button>
+</form>
+
+<form action='/questions/<%= @id %>' method='post'>
+  <label for='answer_content'>Answer</label>
+  <input id='answer_content' name='answer_content' type='text'>
+  <button type='submit'>Add Answer</button>
+</form>
+
+<% if @my_question.answers.any? %>
+  <ul>
+    <p>The following answers have been added to your question.</p>
+    <% @my_question.answers.each do |answer|%>
+      <li>
+        <a href="/answers/<%=answer.id()%>"><%= answer.content() %></a>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>There are no answers for this question yet.</p>
+<% end %>
+
+
+<form action="/questions/<%= @id%>" method="post">
+  <input name="_method" type="hidden" value="delete">
+  <button type="submit">Delete question</button>
+</form>
