@@ -13,4 +13,9 @@ describe(Survey) do
     expect(survey_1.save).to(eq(false))
   end
 
+  it("ensures that the descripton lenght is not too long") do
+    survey = Survey.create(:description => 'a'*60)
+    expect(survey.save).to eq(false)
+  end
+
 end
