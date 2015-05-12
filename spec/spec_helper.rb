@@ -7,6 +7,7 @@ require("pg")
 require("survey")
 require("question")
 require("answer")
+require("user")
 
 
 RSpec.configure do |config|

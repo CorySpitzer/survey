@@ -5,6 +5,7 @@ also_reload("lib/*.rb")
 require("./lib/answer")
 require("./lib/question")
 require("./lib/survey")
+require("./lib/user")
 require("pg")
 
 get('/') do
