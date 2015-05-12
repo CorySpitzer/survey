@@ -48,3 +48,26 @@ delete('/surveys/:id') do
   @my_survey.delete()
   redirect("/surveys")
 end
+
+get('/questions/:id') do
+  @id = params.fetch('id').to_i()
+  @my_question = Question.find(@id)
+  @my_survey = Survey.find(@my_question.survey_id)
+  erb(:question_edit)
+end
+
+patch('/questions/:id') do
+  @id = params.fetch('id').to_i()
+  @my_question = Question.find(@id)
+  @my_survey = Survey.find(@my_question.survey_id)
+  @my_question.update(content: params.fetch('content'))
+  redirect("/questions/#{@id}")
+end
+
+delete('/questions/:id') do
+  @id = params.fetch('id').to_i()
+  @my_question = Question.find(@id)
+  @my_survey = Survey.find(@my_question.survey_id)
+  @my_question.delete()
+  redirect("/surveys/#{@my_survey.id}")
+end
