@@ -21,4 +21,14 @@ describe('The Survey App', type: :feature) do
     end
   end
 
+  describe('the edit survey path') do
+    it('edits a survey name') do
+      survey = Survey.create(description: 'Your mood!')
+      visit("/surveys/#{survey.id}")
+      fill_in('description', with: 'Not Your Mood')
+      click_button('Change')
+      expect(page).to have_content('Edit Survey: Not Your Mood')
+    end
+  end
+
 end

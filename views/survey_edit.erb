@@ -1,4 +1,4 @@
-<h2>Edit a Survey</h2>
+<h2>Edit Survey: <i><b><%= @my_survey.description %></b></i></h2>
 
 <form action='/surveys/<%=@id%>' method='post'>
   <label for='description'>Change Survey Name</label>
@@ -9,11 +9,11 @@
 <% if @my_survey.questions.any? %>
   <ul>
     <p>The following questions have been added to your survey.</p>
-  <% @surveys.questions.each do |question|%>
-    <li>
-      <a href="questions/<%=question.id()%>"><%= question.description() %></a>
-    </li>
-  <% end %>
+    <% @surveys.questions.each do |question|%>
+      <li>
+        <a href="questions/<%=question.id()%>"><%= question.description() %></a>
+      </li>
+    <% end %>
   </ul>
 <% else %>
   <p>There are no questions for this Survey yet.</p>
