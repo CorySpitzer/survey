@@ -17,7 +17,7 @@ describe('The Survey App', type: :feature) do
       visit('/surveys')
       fill_in('description', with: 'Your mood!')
       click_button('Add')
-      expect(page).to have_content('Your mood')
+      expect(page).to have_content('Your Mood')
     end
   end
 

@@ -18,4 +18,9 @@ describe(Survey) do
     expect(survey.save).to eq(false)
   end
 
+  it("converts the entry to first letters of words are capital") do
+    survey = Survey.create(:description => 'this sentence has no capital letters!')
+    expect(survey.description).to(eq("This Sentence Has No Capital Letters!"))
+  end
+
 end
